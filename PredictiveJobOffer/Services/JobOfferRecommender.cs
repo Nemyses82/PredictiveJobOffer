@@ -31,21 +31,13 @@ namespace PredictiveJobOffer.Services
             }
         }
 
-        public async Task<SimilarItemViewModel> GetSimilarItems(string jobOfferId)
+        public async Task<SimilarItemViewModel> GetSimilarItems(string jobOfferId, string userId)
         {
             try
             {
-                //add click event
-                // PersonalizedRecommendationsService.AddEventTracker(jobOfferId, userId);
+                PersonalizedRecommendationsService.AddEventTracker(jobOfferId, userId);
 
                 var results = await PersonalizedRecommendationsService.GetSimilarItems(jobOfferId);
-
-                // results.SimilarItemViewModel.UserId = userId;
-
-                //get user info
-                // results.SimilarItemViewModel.User = new User() { User_Id = userId };
-                //
-                // results.MostPopularItems = await PersonalizedRecommendationsService.GetMostPopularItems(userId);
 
                 return results;
             }

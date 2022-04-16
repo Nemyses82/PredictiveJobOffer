@@ -1,5 +1,7 @@
 ﻿using Amazon;
 using Amazon.Personalize;
+using Amazon.PersonalizeEvents;
+using Amazon.PersonalizeEvents.Model;
 using Amazon.PersonalizeRuntime;
 using Amazon.PersonalizeRuntime.Model;
 using Newtonsoft.Json;
@@ -45,24 +47,6 @@ namespace PredictiveJobOffer.Services
                         Score = x.Score
                     }).ToList();
 
-                // var relateditemsrequestrecommendedItems = getRecommendationsResponse.ItemList;
-                //
-                // var json = JsonConvert.SerializeObject(relateditemsrequestrecommendedItems);
-                //
-                // Logger.LogInformation("GetSimilarItems for movie:" + jobOfferId + ": " + json);
-
-                    // results = new SimilarItemViewModel
-                    // {
-                    //
-                    //     //selected movie
-                    //     JobOffer = await _storageService.GetMovieData(jobOfferId)
-                    // };
-
-
-                    // List<string> itemIds = relateditemsrequestrecommendedItems.Select(s => s.ItemId).ToList();
-                    //
-                    // results.SimilarItems.Movies = await _storageService.GetMovieData(itemIds.ToArray());
-
                 return results;
             }
             catch (Exception ex)
@@ -82,7 +66,6 @@ namespace PredictiveJobOffer.Services
                 //USER_PERSONALIZATION -- userid required
                 var request = new GetRecommendationsRequest
                 {
-                    // CampaignArn = AwsParameterStoreClient.GetPersonalRecommendationsArn(), //personal-recommendations-metadata
                     CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-campaign-1",
                     ItemId = jobOfferId,
                     NumResults = 10
@@ -97,24 +80,47 @@ namespace PredictiveJobOffer.Services
                         Score = x.Score
                     }).ToList();
 
-                // var recommendedItems = response.ItemList;
-                
-                // var json = JsonConvert.SerializeObject(recommendedItems);
-                //
-                //     Logger.LogInformation("GetRecommendations:" + jobOfferId + ": " + json);
-                //
-                // results = new PersonalizeViewModel { User = new User() { User_Id = jobOfferId } };
-                
-                // get movie thumbnail from imdb
-                // IList<RecommendedItems> recItems = new List<RecommendedItems>();
-                
-                // var itemIds = recommendedItems.Select(s => s.ItemId).ToList();
-                //
-                //     results.RecommendedItems.Movies = await _storageService.GetMovieData(itemIds.ToArray());
-                //
                 return results;
             }
             catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public void AddEventTracker(string jobOfferId, string userId)
+        {
+            try
+            {
+                //record events
+                var eventRequest = new PutEventsRequest
+                {
+                    TrackingId = "6aa10cf2-69ff-4542-aa02-4a55f8f164ec",
+                    UserId = userId, //USER_ID
+                    SessionId = Guid.NewGuid().ToString() //SESSION_ID
+                };
+
+                var ev1 = new TrackingEvent { itemId = jobOfferId };
+
+                var ev = JsonConvert.SerializeObject(ev1);
+
+                var e = new Event
+                {
+                    //e.EventId = "event1";
+                    EventType = "click", //EVENT_TYPE
+                    Properties = ev,
+                    SentAt = DateTime.Now, //TIMESTAMP
+                };
+
+                var events = new List<Event> { e };
+
+                eventRequest.EventList = events;
+
+                var amazonPersonalizeEventsClient = new AmazonPersonalizeEventsClient(RegionEndpoint.USEast1);
+
+                amazonPersonalizeEventsClient.PutEventsAsync(eventRequest);
+            }
+            catch (Exception exception)
             {
                 throw;
             }
