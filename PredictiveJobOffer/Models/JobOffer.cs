@@ -10,6 +10,7 @@
 
         public string Year { get; set; }
         public string Genre { get; set; }
+        public double Score { get; set; }
 
         public string GetRating()
         {

@@ -9,8 +9,8 @@ namespace PredictiveJobOffer.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
 
         private readonly ILogger<WeatherForecastController> _logger;
         private JobOfferRecommender _jobOfferRecommender;
@@ -24,18 +24,6 @@ namespace PredictiveJobOffer.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-
-            // Temporary logic to retrieve Recommendations
-
-            var personalizeViewModel =
-                Task.Run(() => _jobOfferRecommender.GetRecommendations("1"));
-
-            var similarItemViewModel =
-                Task.Run(() => _jobOfferRecommender.GetSimilarItems("41989292"));
-
-            //
-
-
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

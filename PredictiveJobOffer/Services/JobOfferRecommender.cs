@@ -20,7 +20,8 @@ namespace PredictiveJobOffer.Services
         
                 var recommendations = await PersonalizedRecommendationsService.GetRecommendations(userId);
                 // results.User = recommendations.User;
-                results.RecommendedItems = recommendations.RecommendedItems;
+                if (recommendations != null)
+                    results.RecommendedItems = recommendations.RecommendedItems;
         
                 return results;
             }

@@ -24,38 +24,44 @@ namespace PredictiveJobOffer.Services
         // predictive-job-offer-engine-campaign-2
         public async Task<RecommendedViewModel> GetRecommendations(string userId)
         {
-            RecommendedViewModel results = null;
+            RecommendedViewModel results = new();
 
             try
             {
                 //RELATED_ITEMS -- itemId required
                 var relateditemsrequest = new GetRecommendationsRequest
                 {
-                    // CampaignArn = AwsParameterStoreClient.GetSimsArn(), //sims-arn
                     CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-campaign-2",
                     UserId = userId,
                     NumResults = 10
                 };
 
-                var relateditemsrequestresponse = await AmazonPersonalizeRuntimeClient.GetRecommendationsAsync(relateditemsrequest);
+                var getRecommendationsResponse = await AmazonPersonalizeRuntimeClient.GetRecommendationsAsync(relateditemsrequest);
 
-                var relateditemsrequestrecommendedItems = relateditemsrequestresponse.ItemList;
+                if (getRecommendationsResponse.ItemList.Any())
+                    results.RecommendedItems.JobOffers = getRecommendationsResponse.ItemList.Select(x => new JobOffer
+                    {
+                        Id = x.ItemId,
+                        Score = x.Score
+                    }).ToList();
 
-                var json = JsonConvert.SerializeObject(relateditemsrequestrecommendedItems);
+                // var relateditemsrequestrecommendedItems = getRecommendationsResponse.ItemList;
+                //
+                // var json = JsonConvert.SerializeObject(relateditemsrequestrecommendedItems);
                 //
                 // Logger.LogInformation("GetSimilarItems for movie:" + jobOfferId + ": " + json);
 
-                // results = new SimilarItemViewModel
-                // {
-                //
-                //     //selected movie
-                //     JobOffer = await _storageService.GetMovieData(jobOfferId)
-                // };
+                    // results = new SimilarItemViewModel
+                    // {
+                    //
+                    //     //selected movie
+                    //     JobOffer = await _storageService.GetMovieData(jobOfferId)
+                    // };
 
 
-                // List<string> itemIds = relateditemsrequestrecommendedItems.Select(s => s.ItemId).ToList();
-                //
-                // results.SimilarItems.Movies = await _storageService.GetMovieData(itemIds.ToArray());
+                    // List<string> itemIds = relateditemsrequestrecommendedItems.Select(s => s.ItemId).ToList();
+                    //
+                    // results.SimilarItems.Movies = await _storageService.GetMovieData(itemIds.ToArray());
 
                 return results;
             }
@@ -69,7 +75,7 @@ namespace PredictiveJobOffer.Services
         // predictive-job-offer-engine-campaign-1
         public async Task<SimilarItemViewModel> GetSimilarItems(string jobOfferId)
         {
-            SimilarItemViewModel results = null;
+            SimilarItemViewModel results = new ();
 
             try
             {
@@ -84,7 +90,14 @@ namespace PredictiveJobOffer.Services
                 
                 var response = await AmazonPersonalizeRuntimeClient.GetRecommendationsAsync(request);
                 
-                var recommendedItems = response.ItemList;
+                if (response.ItemList.Any())
+                    results.SimilarItems.JobOffers = response.ItemList.Select(x => new JobOffer
+                    {
+                        Id = x.ItemId,
+                        Score = x.Score
+                    }).ToList();
+
+                // var recommendedItems = response.ItemList;
                 
                 // var json = JsonConvert.SerializeObject(recommendedItems);
                 //
