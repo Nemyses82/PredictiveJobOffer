@@ -15,22 +15,41 @@
      LOADMORE -->
      =============================================== */
 
-    $(function () {
-        $(".job-tab").slice(0,6).show();
-            $("#loadMore").on('click', function (e) {
-            e.preventDefault();
-            $(".job-tab:hidden").slice(0, 2).slideDown();
-            if ($(".job-tab:hidden").length == 0) {
-                $("#load").fadeOut('slow');
-            }
-        });
-    });
+    // $(function () {
+    //     $(".job-tab").slice(0,6).show();
+    //     $("#loadMore").on('click', function (e) {
+    //       e.preventDefault();
+    //       $(".job-tab:hidden").slice(0, 2).slideDown();
+    //       if ($(".job-tab:hidden").length == 0) {
+    //           $("#load").fadeOut('slow');
+    //       }
+    //     });
+    // });
     
     /* ==============================================
      LOADER -->
      =============================================== */
 
     $(window).load(function() {
+
+        // moved to here from function above
+        $(".job-tab").slice(0,6).show(); 
+        $("#loadMore").on('click', function (e) {
+          e.preventDefault();
+          $(".job-tab:hidden").slice(0, 2).slideDown();
+          if ($(".job-tab:hidden").length == 0) {
+              $("#load").fadeOut('slow');
+          }
+        });
+        //
+
+        // moved to here from "all.js"
+        $(".element").typed({
+          strings: ["Job Listing", "Directory", "Career"],
+          typeSpeed: 300
+        }); 
+        //       
+
         $('.cssload-container').delay(300).fadeOut('slow');
         $('body').delay(300).css({
             'overflow': 'visible'

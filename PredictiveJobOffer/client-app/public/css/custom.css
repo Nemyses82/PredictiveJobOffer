@@ -80,7 +80,7 @@
 
 .homehero {
     padding: 12em 0 5em;
-    background-image:url('upload/demo.jpg');
+    background-image:url('../upload/demo.jpg');
 }
 
 .home-message h1 {
