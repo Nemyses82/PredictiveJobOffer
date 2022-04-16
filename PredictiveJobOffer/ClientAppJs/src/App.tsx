@@ -12,11 +12,21 @@ export default class App extends Component {
 
   render () {
     return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
-      </Layout>
+
+    //   <Layout>
+    //     <Route exact path='/' component={Home} />
+    //     <Route path='/counter' component={Counter} />
+    //     <Route path='/fetch-data' component={FetchData} />
+    //   </Layout>
+
+      <div>
+
+        <div className="cssload-container">
+            <div className="cssload-loader"></div>
+        </div>
+
+      </div>
+      
     );
   }
 }
