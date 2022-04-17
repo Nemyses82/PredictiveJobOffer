@@ -20,7 +20,8 @@ function App() {
         </a>
       </header> */}    
       
-      <div className="cssload-container">
+      {/* TODO: create component */}
+      <div className="cssload-container"> 
           <div className="cssload-loader"></div>
       </div>
 
@@ -51,6 +52,7 @@ function App() {
               </div>
           </div>
 
+        {/* TODO: create component */}
           <header className="header">
               <div className="container-fluid">
                   <nav className="navbar navbar-default yamm">
@@ -137,7 +139,7 @@ function App() {
               
           </header>
           
-          <div className="parallax section homehero" data-stellar-background-ratio="0.5" >
+          {/* <div className="parallax section homehero" data-stellar-background-ratio="0.5" >
               <div className="container">
                   <div className="row">
                       <div className="col-md-7">
@@ -156,9 +158,9 @@ function App() {
                       </div>
                   </div>
               </div>
-          </div>
+          </div> */}
 
-          <div className="sectionnr nopadding wb">
+          {/* <div className="sectionnr nopadding wb">
               <div className="container">
                   <form className="submit-form customform">
                       <div className="row">
@@ -227,7 +229,7 @@ function App() {
                       </div>
                   </form>
               </div>
-          </div>
+          </div> */}
 
           <div className="section lb">
               <div className="container">
@@ -586,7 +588,7 @@ function App() {
               </div>
           </div>
 
-          <div className="section wb">
+          {/* <div className="section wb">
               <div className="container">
                   <div className="row">
                       <div className="col-md-6">
@@ -648,9 +650,9 @@ function App() {
                       </div>
                   </div>
               </div>
-          </div>
+          </div> */}
 
-          <div className="section lb">
+          {/* <div className="section lb">
               <div className="container">
                   <div className="section-title text-center clearfix">
                       <h4>Looking for Experts?</h4>
@@ -826,7 +828,7 @@ function App() {
                       <a href="#" className="btn btn-default">View All Freelancers</a>
                   </div>
               </div>
-          </div>
+          </div> */}
 
           <div className="section footer">
               <div className="container">

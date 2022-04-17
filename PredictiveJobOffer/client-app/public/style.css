@@ -611,7 +611,7 @@ h5.color3 {
 }
 
 .section {
-    padding: 120px 0;
+    padding: 20px 0;  /* 120px 0; */
     display: block;
     z-index: 2;
     position: relative;
