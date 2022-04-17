@@ -1,11 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Loader } from './components/Loader';
+import { TopBar } from './components/TopBar';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { ContactMe } from './components/ContactMe';
+import { PageTop } from './components/PageTop';
+import { LoginModal } from './components/LoginModal';
 
 function App() {
-  return (
-    <div className="App">
-      {/* <header className="App-header">
+    return (
+        <div className="App">
+            {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -18,15 +25,16 @@ function App() {
         >
           Learn React
         </a>
-      </header> */}    
-      
-      {/* TODO: create component */}
-      <div className="cssload-container"> 
-          <div className="cssload-loader"></div>
-      </div>
+      </header> */}
 
-      <div id="wrapper">
-          <div className="topbar">
+            {/* TODO: create component */}
+            {/* <div className="cssload-container"> 
+          <div className="cssload-loader"></div>
+      </div> */}
+            <Loader />
+
+            <div id="wrapper">
+                {/* <div className="topbar">
               <div className="container">
                   <div className="row">
                       <div className="col-md-6 col-sm-12 center-xs">
@@ -50,10 +58,11 @@ function App() {
                       </div>
                   </div>
               </div>
-          </div>
+          </div> */}
+                <TopBar />
 
-        {/* TODO: create component */}
-          <header className="header">
+                {/* TODO: create component */}
+                {/* <header className="header">
               <div className="container-fluid">
                   <nav className="navbar navbar-default yamm">
                       <div className="container">
@@ -137,9 +146,10 @@ function App() {
                   
               </div>
               
-          </header>
-          
-          {/* <div className="parallax section homehero" data-stellar-background-ratio="0.5" >
+          </header> */}
+                <Header />
+
+                {/* <div className="parallax section homehero" data-stellar-background-ratio="0.5" >
               <div className="container">
                   <div className="row">
                       <div className="col-md-7">
@@ -160,7 +170,7 @@ function App() {
               </div>
           </div> */}
 
-          {/* <div className="sectionnr nopadding wb">
+                {/* <div className="sectionnr nopadding wb">
               <div className="container">
                   <form className="submit-form customform">
                       <div className="row">
@@ -231,364 +241,364 @@ function App() {
               </div>
           </div> */}
 
-          <div className="section lb">
-              <div className="container">
-                  <div className="section-title text-center clearfix">
-                      <h4>Featured Jobs</h4>
-                      <hr/>
-                      <p className="lead">Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a euismod suspendisse vel, sed quam nulla mauris iaculis. Erat eget vitae malesuada, tortor tincidunt porta lorem lectus.</p>
-                  </div>
+                <div className="section lb">
+                    <div className="container">
+                        <div className="section-title text-center clearfix">
+                            <h4>Featured Jobs</h4>
+                            <hr />
+                            <p className="lead">Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a euismod suspendisse vel, sed quam nulla mauris iaculis. Erat eget vitae malesuada, tortor tincidunt porta lorem lectus.</p>
+                        </div>
 
-                  <div className="all-jobs job-listing clearfix">
-                      <div className="job-title hidden-sm hidden-xs"><h5>Featured</h5></div>
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_06.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                        <div className="all-jobs job-listing clearfix">
+                            <div className="job-title hidden-sm hidden-xs"><h5>Featured</h5></div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_06.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge freelancer-badge">Freelancer</div>
-                                  <h3><a href="job-single.html" title="">Development Team Lead (Group Wide Technology)</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">Amanda Sun</a></span> 
-                                      <span>In : <a href="#">Development</a></span>
-                                      <span>Date : 21.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge freelancer-badge">Freelancer</div>
+                                        <h3><a href="job-single.html" title="">Development Team Lead (Group Wide Technology)</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">Amanda Sun</a></span>
+                                            <span>In : <a href="#">Development</a></span>
+                                            <span>Date : 21.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>Melbourne</p>
-                                      <small>Australia</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>Melbourne</p>
+                                            <small>Australia</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>$1200 - $1300</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">Make Offer</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>$1200 - $1300</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">Make Offer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_01.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_01.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge freelancer-badge">Freelancer</div>
-                                  <h3><a href="job-single.html" title="">Make my website responsive device compatible</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">Amanda Sun</a></span> 
-                                      <span>In : <a href="#">Web Design</a></span>
-                                      <span>Date : 16.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge freelancer-badge">Freelancer</div>
+                                        <h3><a href="job-single.html" title="">Make my website responsive device compatible</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">Amanda Sun</a></span>
+                                            <span>In : <a href="#">Web Design</a></span>
+                                            <span>Date : 16.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>Hanua</p>
-                                      <small>Germany</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>Hanua</p>
+                                            <small>Germany</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>$200 - $340</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">Make Offer</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>$200 - $340</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">Make Offer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_02.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_02.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge part-badge">Part Time</div>
-                                  <h3><a href="job-single.html" title="">Hiring Online English Teachers</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">Bob Sturan</a></span> 
-                                      <span>In : <a href="#">Web Design</a></span>
-                                      <span>Date : 14.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge part-badge">Part Time</div>
+                                        <h3><a href="job-single.html" title="">Hiring Online English Teachers</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">Bob Sturan</a></span>
+                                            <span>In : <a href="#">Web Design</a></span>
+                                            <span>Date : 14.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>Antalya</p>
-                                      <small>Turkey</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>Antalya</p>
+                                            <small>Turkey</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>$650/mo</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>$650/mo</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_03.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_03.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge full-badge">Full Time</div>
-                                  <h3><a href="job-single.html" title="">Looking Graphic Designer (Logo + UI)</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">Kim Danson</a></span> 
-                                      <span>In : <a href="#">Web Design</a></span>
-                                      <span>Date : 13.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge full-badge">Full Time</div>
+                                        <h3><a href="job-single.html" title="">Looking Graphic Designer (Logo + UI)</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">Kim Danson</a></span>
+                                            <span>In : <a href="#">Web Design</a></span>
+                                            <span>Date : 13.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>New York</p>
-                                      <small>United States</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>New York</p>
+                                            <small>United States</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>$1200/mo</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>$1200/mo</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_04.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_04.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge freelancer-badge">Freelancer</div>
-                                  <h3><a href="job-single.html" title="">Are you Typography Expert?</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">Teressa Lisbon</a></span> 
-                                      <span>In : <a href="#">Web Design</a></span>
-                                      <span>Date : 11.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge freelancer-badge">Freelancer</div>
+                                        <h3><a href="job-single.html" title="">Are you Typography Expert?</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">Teressa Lisbon</a></span>
+                                            <span>In : <a href="#">Web Design</a></span>
+                                            <span>Date : 11.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>Kash</p>
-                                      <small>Russia</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>Kash</p>
+                                            <small>Russia</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>$56 - $90</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">Make Offer</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>$56 - $90</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">Make Offer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_05.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_05.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge partnership-badge">Partnership</div>
-                                  <h3><a href="job-single.html" title="">Looking WordPress Developer for ThemeForest</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">John DOE</a></span> 
-                                      <span>In : <a href="#">Web Design</a></span>
-                                      <span>Date : 08.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge partnership-badge">Partnership</div>
+                                        <h3><a href="job-single.html" title="">Looking WordPress Developer for ThemeForest</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">John DOE</a></span>
+                                            <span>In : <a href="#">Web Design</a></span>
+                                            <span>Date : 08.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>Austin</p>
-                                      <small>United States</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>Austin</p>
+                                            <small>United States</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>-</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">Contact</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>-</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">Contact</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_02.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_02.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge part-badge">Part Time</div>
-                                  <h3><a href="job-single.html" title="">Hiring Online English Teachers</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">Bob Sturan</a></span> 
-                                      <span>In : <a href="#">Web Design</a></span>
-                                      <span>Date : 14.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge part-badge">Part Time</div>
+                                        <h3><a href="job-single.html" title="">Hiring Online English Teachers</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">Bob Sturan</a></span>
+                                            <span>In : <a href="#">Web Design</a></span>
+                                            <span>Date : 14.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>Antalya</p>
-                                      <small>Turkey</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>Antalya</p>
+                                            <small>Turkey</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>$650/mo</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>$650/mo</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_03.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_03.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge full-badge">Full Time</div>
-                                  <h3><a href="job-single.html" title="">Looking Graphic Designer (Logo + UI)</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">Kim Danson</a></span> 
-                                      <span>In : <a href="#">Web Design</a></span>
-                                      <span>Date : 13.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge full-badge">Full Time</div>
+                                        <h3><a href="job-single.html" title="">Looking Graphic Designer (Logo + UI)</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">Kim Danson</a></span>
+                                            <span>In : <a href="#">Web Design</a></span>
+                                            <span>Date : 13.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>New York</p>
-                                      <small>United States</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>New York</p>
+                                            <small>United States</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>$1200/mo</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>$1200/mo</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_04.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_04.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge freelancer-badge">Freelancer</div>
-                                  <h3><a href="job-single.html" title="">Are you Typography Expert?</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">Teressa Lisbon</a></span> 
-                                      <span>In : <a href="#">Web Design</a></span>
-                                      <span>Date : 11.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge freelancer-badge">Freelancer</div>
+                                        <h3><a href="job-single.html" title="">Are you Typography Expert?</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">Teressa Lisbon</a></span>
+                                            <span>In : <a href="#">Web Design</a></span>
+                                            <span>Date : 11.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>Kash</p>
-                                      <small>Russia</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>Kash</p>
+                                            <small>Russia</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>$56 - $90</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">Make Offer</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>$56 - $90</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">Make Offer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                      <div className="job-tab">
-                          <div className="row">
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="post-media">
-                                  <a href="job-single.html"><img src="upload/job_05.jpg" alt="" className="img-responsive img-thumbnail"/></a>
-                                  </div>
-                              </div>
+                            <div className="job-tab">
+                                <div className="row">
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="post-media">
+                                            <a href="job-single.html"><img src="upload/job_05.jpg" alt="" className="img-responsive img-thumbnail" /></a>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-6 col-sm-6 col-xs-12">
-                                  <div className="badge partnership-badge">Partnership</div>
-                                  <h3><a href="job-single.html" title="">Make my website responsive device compatible</a></h3>
-                                  <small>
-                                      <span>Publisher : <a href="#">John DOE</a></span> 
-                                      <span>In : <a href="#">Web Design</a></span>
-                                      <span>Date : 08.06.2016</span>
-                                  </small>
-                              </div>
+                                    <div className="col-md-6 col-sm-6 col-xs-12">
+                                        <div className="badge partnership-badge">Partnership</div>
+                                        <h3><a href="job-single.html" title="">Make my website responsive device compatible</a></h3>
+                                        <small>
+                                            <span>Publisher : <a href="#">John DOE</a></span>
+                                            <span>In : <a href="#">Web Design</a></span>
+                                            <span>Date : 08.06.2016</span>
+                                        </small>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta">
-                                      <p>Austin</p>
-                                      <small>United States</small>
-                                  </div>
-                              </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta">
+                                            <p>Austin</p>
+                                            <small>United States</small>
+                                        </div>
+                                    </div>
 
-                              <div className="col-md-2 col-sm-2 col-xs-12">
-                                  <div className="job-meta text-center">
-                                      <h4>-</h4>
-                                      <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                        <div className="job-meta text-center">
+                                            <h4>-</h4>
+                                            <a href="#" className="btn btn-primary btn-sm btn-block">View Job</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                  <div className="loadmorebutton text-center clearfix">
-                      <a href="#" className="btn btn-primary" id="loadMore">Load More Jobs</a>
-                  </div>
-              </div>
-          </div>
+                        <div className="loadmorebutton text-center clearfix">
+                            <a href="#" className="btn btn-primary" id="loadMore">Load More Jobs</a>
+                        </div>
+                    </div>
+                </div>
 
-          {/* <div className="section wb">
+                {/* <div className="section wb">
               <div className="container">
                   <div className="row">
                       <div className="col-md-6">
@@ -652,7 +662,7 @@ function App() {
               </div>
           </div> */}
 
-          {/* <div className="section lb">
+                {/* <div className="section lb">
               <div className="container">
                   <div className="section-title text-center clearfix">
                       <h4>Looking for Experts?</h4>
@@ -830,7 +840,7 @@ function App() {
               </div>
           </div> */}
 
-          <div className="section footer">
+                {/* <div className="section footer">
               <div className="container">
                   <div className="row">
                       <div className="col-md-2 col-sm-12">
@@ -950,77 +960,81 @@ function App() {
                       </div>
                   </div>
               </div>
-          </div>
+          </div> */}
+                <Footer />
 
-          <div id="sitefooter-wrap" className="stickyfooter">
-              <div id="sitefooter" className="container">
-                  <div id="copyright" className="row">
-                      <div className="col-md-6 col-sm-12 text-left">
-                          <p>YourJob ® is a designed and registered trademark of <a href="http://psdconverthtml.com">PSD to HTML</a> INC.</p>
-                      </div>
-                      <div className="col-md-6 col-sm-12">
-                          <ul className="list-inline text-right">
-                              <li><a href="#">Terms of Usage</a></li>
-                              <li><a href="#">Copyrights</a></li>
-                              <li><a href="#">License</a></li>
-                              <li><a href="#">Contact</a></li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                <div id="sitefooter-wrap" className="stickyfooter">
+                    <div id="sitefooter" className="container">
+                        <div id="copyright" className="row">
+                            <div className="col-md-6 col-sm-12 text-left">
+                                <p>YourJob ® is a designed and registered trademark of <a href="http://psdconverthtml.com">PSD to HTML</a> INC.</p>
+                            </div>
+                            <div className="col-md-6 col-sm-12">
+                                <ul className="list-inline text-right">
+                                    <li><a href="#">Terms of Usage</a></li>
+                                    <li><a href="#">Copyrights</a></li>
+                                    <li><a href="#">License</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-          <div className="contactme hidden-xs">
+                {/* <div className="contactme hidden-xs">
               <a href="page-contact.html">
                   <img src="upload/me.jpg" className="img-circle" alt="" data-toggle="tooltip" data-placement="top" title="Need Help?" />
                   <span className="oi" data-glyph="chat"></span>
               </a>
-          </div>
+          </div> */}
+                <ContactMe />
 
-          <div className="dmtop"><i className="fa fa-angle-up"></i></div>
+                {/* <div className="dmtop"><i className="fa fa-angle-up"></i></div> */}
+                <PageTop />
 
-          <div className="modal fade" id="loginmodal" role="dialog">
-              <div className="modal-dialog">
-                  <div className="modal-content">
-                      <button type="button" className="close closebtn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <div className="modal-body">
-                          <div className="widget clearfix">
-                              <div className="post-padding item-price">
-                                  <div className="row">
-                                      <div className="col-md-6">
-                                          <div className="content-title">
-                                              <h4><i className="fa fa-lock"></i> Login Account</h4>
-                                          </div>
+                {/* <div className="modal fade" id="loginmodal" role="dialog">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <button type="button" className="close closebtn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div className="modal-body">
+                                <div className="widget clearfix">
+                                    <div className="post-padding item-price">
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="content-title">
+                                                    <h4><i className="fa fa-lock"></i> Login Account</h4>
+                                                </div>
 
-                                          <form id="submit" className="submit-form">
-                                              <div className="row">
-                                                  <div className="col-md-12 col-sm-12">
-                                                      <input type="text" className="form-control" placeholder="Username or Email" />
-                                                      <input type="password" className="form-control" placeholder="*******" />
-                                                      <button className="btn btn-primary">Login</button>
-                                                  </div>
-                                              </div>
-                                          </form>
-                                      </div>
+                                                <form id="submit" className="submit-form">
+                                                    <div className="row">
+                                                        <div className="col-md-12 col-sm-12">
+                                                            <input type="text" className="form-control" placeholder="Username or Email" />
+                                                            <input type="password" className="form-control" placeholder="*******" />
+                                                            <button className="btn btn-primary">Login</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
 
-                                      <div className="col-md-6">
-                                          <div className="content-title">
-                                              <h4>No have account?</h4>
-                                          </div>
+                                            <div className="col-md-6">
+                                                <div className="content-title">
+                                                    <h4>No have account?</h4>
+                                                </div>
 
-                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the</p>
-                                          <a href="#" className="btn btn-custom">Register Account</a>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>    
-    </div>
-  );
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the</p>
+                                                <a href="#" className="btn btn-custom">Register Account</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+                <LoginModal />
+            </div>
+        </div>
+    );
 }
 
 export default App;
