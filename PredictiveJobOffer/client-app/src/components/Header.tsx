@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 export class Header extends Component {
     static displayName = Header.name;
@@ -22,8 +23,9 @@ export class Header extends Component {
 
 
                                 <div id="navbar" className="navbar-collapse collapse">
-                                    <ul className="nav navbar-nav">
+                                    <ul className="nav navbar-nav">                                    
                                         <li><a title="" href="index.html">Home</a></li>
+                                        <li><a title="" href="index.html"><Link to="/joblisting">RecommendedJobs</Link></a></li>
                                         <li className="dropdown yamm-half hasmenu">
                                             <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Employers <span className="fa fa-angle-down"></span></a>
                                             <ul className="dropdown-menu">
@@ -81,7 +83,7 @@ export class Header extends Component {
                                         <li><a href="#loginmodal" role="button" data-toggle="modal" title="">Sign in</a></li>
                                         <li><a className="btn btn-primary" title="" href="job-add.html">Submit Job</a></li>
                                     </ul>
-                                </div>
+                                </div>                                
                             </div>
                         </nav>
                     </div>

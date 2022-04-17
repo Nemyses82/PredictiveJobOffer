@@ -8,7 +8,9 @@ import { Footer } from './components/Footer';
 import { ContactMe } from './components/ContactMe';
 import { PageTop } from './components/PageTop';
 import { LoginModal } from './components/LoginModal';
-import { JobListing } from './components/JobListing';
+import { Link, Route, Routes } from "react-router-dom";
+import { JobOfferDetail } from './components/JobOfferDetail';
+import JobListing from './components/JobListing';
 
 function App() {
     return (
@@ -22,7 +24,16 @@ function App() {
 
                 <Header />
 
-                <div className="section lb">
+                <Routes>
+                    <Route path="/" element={<JobListing />} />
+                    <Route path="/:userId" element={<JobListing />} />
+                    <Route path={"/:userId"} element={<JobListing />}></Route>
+                    <Route path="joblisting/*" element={<JobListing />}>
+                        <Route path=":jobOfferId/:userId" element={<JobOfferDetail />} />
+                    </Route>
+                </Routes>
+
+                {/* <div className="section lb">
                     <div className="container">
                         <div className="section-title text-center clearfix">
                             <h4>Recommended Jobs</h4>
@@ -36,7 +47,7 @@ function App() {
                             <a href="#" className="btn btn-primary" id="loadMore">Load More Jobs</a>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <Footer />
 
