@@ -8,7 +8,7 @@ namespace PredictiveJobOffer.Models
         [ExplicitKey]
         public string Id { get; set; }
 
-        public float JobId { get; set; }
+        public int JobId { get; set; }
         public string JobTitle { get; set; }
         public decimal Salary { get; set; }
         public string Publisher { get; set; }

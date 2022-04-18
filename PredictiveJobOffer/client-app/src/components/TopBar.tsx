@@ -12,7 +12,7 @@ export class TopBar extends Component {
                             <div className="col-md-6 col-sm-12 center-xs">
                                 <p className="topbar-text">
                                     <strong><i className="fa fa-phone"></i></strong> +90 987 123 45 67 &nbsp;&nbsp;
-                                    <strong><i className="fa fa-envelope-o"></i></strong> <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+                                    <strong><i className="fa fa-envelope-o"></i></strong> <a href="mailto:info@predictivejoboffer.com">info@predictivejoboffer.com</a>
                                 </p>
                             </div>
 

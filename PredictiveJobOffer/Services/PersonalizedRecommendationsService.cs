@@ -1,4 +1,5 @@
-﻿using Amazon;
+﻿using System.Net;
+using Amazon;
 using Amazon.Personalize;
 using Amazon.PersonalizeEvents;
 using Amazon.PersonalizeEvents.Model;
@@ -21,9 +22,8 @@ namespace PredictiveJobOffer.Services
 
             AmazonPersonalizeRuntimeClient = new AmazonPersonalizeRuntimeClient(RegionEndpoint.USEast1);
         }
-
-        // predictive-job-offers-solution-user-personalization
-        // predictive-job-offer-engine-campaign-2
+        
+        // arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-user-personalization-campaign-1
         public async Task<RecommendedViewModel> GetRecommendations(string userId)
         {
             RecommendedViewModel results = new();
@@ -33,7 +33,7 @@ namespace PredictiveJobOffer.Services
                 //RELATED_ITEMS -- itemId required
                 var relateditemsrequest = new GetRecommendationsRequest
                 {
-                    CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-campaign-2",
+                    CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-user-personalization-campaign-1",
                     UserId = userId,
                     NumResults = 50
                 };
@@ -43,7 +43,7 @@ namespace PredictiveJobOffer.Services
                 if (getRecommendationsResponse.ItemList.Any())
                     results.RecommendedItems.JobOffers = getRecommendationsResponse.ItemList.Select(x => new JobOffer
                     {
-                        JobId = Convert.ToSingle(x.ItemId),
+                        JobId = Convert.ToInt32(x.ItemId),
                         Score = x.Score
                     }).ToList();
 
@@ -55,8 +55,8 @@ namespace PredictiveJobOffer.Services
             }
         }
 
-        // predictive-job-offers-solution-similar-items
-        // predictive-job-offer-engine-campaign-1
+        // arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-similar-items-campaign-1
+        // arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-similar-items-new-campaign-1
         public async Task<SimilarItemViewModel> GetSimilarItems(string jobOfferId)
         {
             SimilarItemViewModel results = new ();
@@ -66,7 +66,7 @@ namespace PredictiveJobOffer.Services
                 //USER_PERSONALIZATION -- userid required
                 var request = new GetRecommendationsRequest
                 {
-                    CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-campaign-1",
+                    CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-similar-items-new-campaign-1",
                     ItemId = jobOfferId,
                     NumResults = 50
                 };
@@ -76,7 +76,7 @@ namespace PredictiveJobOffer.Services
                 if (response.ItemList.Any())
                     results.SimilarItems.JobOffers = response.ItemList.Select(x => new JobOffer
                     {
-                        JobId = Convert.ToSingle(x.ItemId),
+                        JobId = Convert.ToInt32(x.ItemId),
                         Score = x.Score
                     }).ToList();
 

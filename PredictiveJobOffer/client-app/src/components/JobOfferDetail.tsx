@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useLocation } from 'react-router-dom';
+import { SectionTitle } from './SectionTitle';
 
 function JobOfferDetail() {
 
    let { jobOfferId, userId } = useParams();
 
    const parentJobOffer = useLocation().state as any;
-   // console.log({state: location});
 
    const [jobOffers, setJobOffers] = useState([]);
 
@@ -69,7 +69,7 @@ function JobOfferDetail() {
 
                            <hr className="invis" />
 
-                           <p>{parentJobOffer.jobDescription}</p>
+                           <p>{parentJobOffer.jobDescription.slice(0, 500)}...</p>
 
                            <a href="#contactmodal" role="button" data-toggle="modal" className="btn btn-primary btn-custom">Apple For Job</a>
                         </div>
@@ -98,10 +98,8 @@ function JobOfferDetail() {
 
          <div className="section lb">
             <div className="container">
-               <div className="section-title text-center clearfix">
-                  <h4>Check Similar Jobs</h4>
-                  <p className="lead">Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a euismod suspendisse vel, sed quam nulla mauris iaculis. Erat eget vitae malesuada, tortor tincidunt porta lorem lectus.</p>
-               </div>
+
+               <SectionTitle title={'Check Similar Jobs'}/>
 
                <div className="all-jobs job-listing clearfix">
 

@@ -14,28 +14,7 @@ function Header() {
     console.log({ headerUserId : userId });    
 
     useEffect(() => {
-        
-        // console.log({ headerLocation : location });
-        // const splitLocationPathname = location.pathname.split('/').filter(x => x);
-        // console.log({ splitLocationPathname : splitLocationPathname });
-        // console.log({ headerUserId : splitLocationPathname[splitLocationPathname.length-1] });
-
-        // const fetchData = async () => {
-        //    try {
-  
-        //       console.log({ jobOfferId });
-        //       console.log({ userId });
-  
-        //       const { data: response } = await axios.get(`http://localhost:5102/api/Recommendation/GetSimilarItems/${jobOfferId}/${userId}`);
-        //       setJobOffers(response.similarItems.jobOffers);
-  
-        //    } catch (err) {
-        //       console.error((err as Error).message);
-        //    }
-        // };
-  
-        // fetchData();
-  
+          
      }, [userId]);    
 
     return (
@@ -51,7 +30,7 @@ function Header() {
                                     <span className="icon-bar"></span>
                                     <span className="icon-bar"></span>
                                 </button>
-                                <a className="navbar-brand" title="" href="index.html"><img src="/images/logo.png" alt="" className="img-responsive" /></a>
+                                <a className="navbar-brand" title="" href="index.html"><img src="/images/logo2.png" alt="" width="330" className="img-responsive" /></a>
                             </div>
 
 
@@ -73,21 +52,6 @@ function Header() {
                                             <li><a href="employer-favorites.html">Employer Favorites</a></li>
                                             <li><a href="employer-transactions.html">Employer Transactions</a></li>
                                             <li><a href="employer-change-password.html">Employer Change Password</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="dropdown yamm-half hasmenu">
-                                        <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Freelancers <span className="fa fa-angle-down"></span></a>
-                                        <ul className="dropdown-menu">
-                                            <li><a href="freelancer-profile.html">Freelancer Profile</a></li>
-                                            <li><a href="freelancer-dashboard.html">Freelancer Dashboard</a></li>
-                                            <li><a href="freelancer-edit-resume.html">Freelancer Edit Profile</a></li>
-                                            <li><a href="freelancer-active-jobs.html">Freelancer Active Jobs</a></li>
-                                            <li><a href="freelancer-passed-jobs.html">Freelancer Passed Jobs</a></li>
-                                            <li><a href="freelancer-change-password.html">Freelancer Change Password</a></li>
-                                            <li><a href="freelancer-search.html">Freelancer Search</a></li>
-                                            <li><a href="freelancer-search-map.html">Freelancer Search Map</a></li>
-                                            <li><a href="freelancer-listing.html">Freelancer Listing</a></li>
-                                            <li><a href="freelancer-add-resume.html">Freelancer Add a CV</a></li>
                                         </ul>
                                     </li>
                                     <li className="dropdown yamm-half hasmenu">

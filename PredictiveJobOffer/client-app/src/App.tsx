@@ -38,22 +38,6 @@ function App() {
                     <Route path="/jobofferdetail/:jobOfferId/:userId" element={<JobOfferDetail />} />
                 </Routes>
 
-                {/* <div className="section lb">
-                    <div className="container">
-                        <div className="section-title text-center clearfix">
-                            <h4>Recommended Jobs</h4>
-                            <hr />
-                            <p className="lead">Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a euismod suspendisse vel, sed quam nulla mauris iaculis. Erat eget vitae malesuada, tortor tincidunt porta lorem lectus.</p>
-                        </div>
-
-                        <JobListing />
-
-                        <div className="loadmorebutton text-center clearfix">
-                            <a href="#" className="btn btn-primary" id="loadMore">Load More Jobs</a>
-                        </div>
-                    </div>
-                </div> */}
-
                 <Footer />
 
                 <div id="sitefooter-wrap" className="stickyfooter">
