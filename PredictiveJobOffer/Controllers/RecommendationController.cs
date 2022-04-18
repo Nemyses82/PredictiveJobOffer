@@ -50,12 +50,10 @@ namespace PredictiveJobOffer.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [Route("SearchByJobTitle/{keyword}")]
         public async Task<IActionResult> SearchByJobTitle(string keyword)
         {
-            var recommendedViewModel = new RecommendedViewModel();
-
-
+            var recommendedViewModel = await _jobOfferRecommender.SearchByJobTitle(keyword);
 
             return Ok(recommendedViewModel);
         }

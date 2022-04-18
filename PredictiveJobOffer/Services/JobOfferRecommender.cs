@@ -15,6 +15,21 @@ namespace PredictiveJobOffer.Services
             _jobOfferRepository = new JobOfferRepository();
         }
 
+        public async Task<RecommendedViewModel> SearchByJobTitle(string keyword)
+        {
+            var searchByJobTitle = await _jobOfferRepository.SearchByJobTitle(keyword);
+
+            var results = new RecommendedViewModel
+            {
+                RecommendedItems =
+                {
+                    JobOffers = searchByJobTitle.ToList()
+                }
+            };
+
+            return results;
+        }
+
         public async Task<RecommendedViewModel> GetRecommendations(string userId)
         {
             var results = new RecommendedViewModel();

@@ -7,6 +7,7 @@ function JobListing() {
 
    let { userId } = useParams();
 
+   const [name, setName] = useState("");
    const [jobOffers, setJobOffers] = useState([]);
 
    useEffect(() => {
@@ -28,18 +29,39 @@ function JobListing() {
 
    }, [userId]);
 
+   const handleSubmit = (e : any) => {
+      e.preventDefault();
+
+      const fetchData = async () => {
+         try {
+
+            console.log({ userId });
+
+            const { data: response } = await axios.get(`http://localhost:5102/api/Recommendation/SearchByJobTitle/${name}`);
+            setJobOffers(response.recommendedItems.jobOffers);
+
+         } catch (err) {
+            console.error((err as Error).message);
+         }
+      };
+
+      fetchData();
+
+   }
+
    return (
       <div>
          <div>
 
             <div className="sectionnr nopadding wb">
                <div className="container">
-                  <form className="submit-form customform">
+                  <form className="submit-form customform" onSubmit={e => {handleSubmit(e)}}>
                      <div className="row">
                         <div className="col-md-4 col-sm-6 col-xs-12">
                            <div className="input-group">
                               <span className="input-group-addon" id="basic-addon2"><i className="fa fa-search"></i></span>
-                              <input type="text" className="form-control" placeholder="Search Keywords" aria-describedby="basic-addon2" />
+                              {/* <input type="text" className="form-control" placeholder="Search Keywords" aria-describedby="basic-addon2" /> */}
+                              <input type="text"  value={name} onChange={e => setName(e.target.value)} className="form-control" placeholder="Search Keywords" aria-describedby="basic-addon2"/>
                            </div>
                         </div>
 
@@ -61,7 +83,7 @@ function JobListing() {
                         </div> */}
 
                         <div className="col-md-3 col-sm-6 col-xs-12">
-                           <button className="btn btn-primary btn-block">Search Freelancer</button>
+                           <button type="submit" className="btn btn-primary btn-block">Search Freelancer</button>
                         </div>
                      </div>
 
