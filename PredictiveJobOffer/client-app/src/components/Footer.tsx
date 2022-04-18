@@ -102,7 +102,7 @@ export class Footer extends Component {
 							<div className="col-md-4 col-sm-12">
 								<div className="widget clearfix">
 									<div className="widget-title">
-										<img className="flogo" src="/images/flogo.png" alt="" />
+										<img className="flogo" src="/images/logo2.png" alt="" />
 									</div>
 
 									<div className="text-widget">

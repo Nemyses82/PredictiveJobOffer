@@ -66,7 +66,7 @@ namespace PredictiveJobOffer.Services
                 //USER_PERSONALIZATION -- userid required
                 var request = new GetRecommendationsRequest
                 {
-                    CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-similar-items-new-campaign-1",
+                    CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-similar-items-campaign-1",
                     ItemId = jobOfferId,
                     NumResults = 50
                 };

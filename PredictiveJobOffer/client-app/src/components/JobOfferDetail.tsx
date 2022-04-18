@@ -71,7 +71,7 @@ function JobOfferDetail() {
 
                            <p>{parentJobOffer.jobDescription.slice(0, 500)}...</p>
 
-                           <a href="#contactmodal" role="button" data-toggle="modal" className="btn btn-primary btn-custom">Apple For Job</a>
+                           <a href="#contactmodal" role="button" data-toggle="modal" className="btn btn-primary btn-custom">Apply For Job</a>
                         </div>
 
                         <div className="col-md-2 col-sm-2 col-xs-12">
