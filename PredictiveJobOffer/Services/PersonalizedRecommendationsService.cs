@@ -35,7 +35,7 @@ namespace PredictiveJobOffer.Services
                 {
                     CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-campaign-2",
                     UserId = userId,
-                    NumResults = 10
+                    NumResults = 50
                 };
 
                 var getRecommendationsResponse = await AmazonPersonalizeRuntimeClient.GetRecommendationsAsync(relateditemsrequest);
@@ -43,7 +43,7 @@ namespace PredictiveJobOffer.Services
                 if (getRecommendationsResponse.ItemList.Any())
                     results.RecommendedItems.JobOffers = getRecommendationsResponse.ItemList.Select(x => new JobOffer
                     {
-                        Id = x.ItemId,
+                        JobId = Convert.ToSingle(x.ItemId),
                         Score = x.Score
                     }).ToList();
 
@@ -68,7 +68,7 @@ namespace PredictiveJobOffer.Services
                 {
                     CampaignArn = "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-campaign-1",
                     ItemId = jobOfferId,
-                    NumResults = 10
+                    NumResults = 50
                 };
                 
                 var response = await AmazonPersonalizeRuntimeClient.GetRecommendationsAsync(request);
@@ -76,7 +76,7 @@ namespace PredictiveJobOffer.Services
                 if (response.ItemList.Any())
                     results.SimilarItems.JobOffers = response.ItemList.Select(x => new JobOffer
                     {
-                        Id = x.ItemId,
+                        JobId = Convert.ToSingle(x.ItemId),
                         Score = x.Score
                     }).ToList();
 
@@ -88,7 +88,7 @@ namespace PredictiveJobOffer.Services
             }
         }
 
-        public void AddEventTracker(string jobOfferId, string userId)
+        public async Task AddEventTracker(string jobOfferId, string userId)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace PredictiveJobOffer.Services
 
                 var amazonPersonalizeEventsClient = new AmazonPersonalizeEventsClient(RegionEndpoint.USEast1);
 
-                amazonPersonalizeEventsClient.PutEventsAsync(eventRequest);
+                await amazonPersonalizeEventsClient.PutEventsAsync(eventRequest);
             }
             catch (Exception exception)
             {

@@ -3,14 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import { Loader } from './components/Loader';
 import { TopBar } from './components/TopBar';
-import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ContactMe } from './components/ContactMe';
 import { PageTop } from './components/PageTop';
 import { LoginModal } from './components/LoginModal';
 import { Link, Route, Routes } from "react-router-dom";
-import { JobOfferDetail } from './components/JobOfferDetail';
 import JobListing from './components/JobListing';
+import JobOfferDetail from './components/JobOfferDetail';
+import Header from './components/Header';
 
 function App() {
     return (
@@ -26,11 +26,16 @@ function App() {
 
                 <Routes>
                     <Route path="/" element={<JobListing />} />
+
                     <Route path="/:userId" element={<JobListing />} />
-                    <Route path={"/:userId"} element={<JobListing />}></Route>
-                    <Route path="joblisting/*" element={<JobListing />}>
-                        <Route path=":jobOfferId/:userId" element={<JobOfferDetail />} />
-                    </Route>
+                    <Route path={"/:userId"} element={<JobListing />} />
+
+                    <Route path="/joblisting/" element={<JobListing />} />
+                    <Route path={"/joblisting/"} element={<JobListing />} />
+
+                    <Route path={"/joblisting/:userId"} element={<JobListing />} />
+
+                    <Route path="/jobofferdetail/:jobOfferId/:userId" element={<JobOfferDetail />} />
                 </Routes>
 
                 {/* <div className="section lb">

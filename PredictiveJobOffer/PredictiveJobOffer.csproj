@@ -18,8 +18,12 @@
     <PackageReference Include="AWSSDK.PersonalizeEvents" Version="3.7.1.119" />
     <PackageReference Include="AWSSDK.PersonalizeRuntime" Version="3.7.1.45" />
     <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="3.7.14.8" />
+    <PackageReference Include="Bogus" Version="34.0.2" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>

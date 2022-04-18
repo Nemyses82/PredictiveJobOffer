@@ -102,7 +102,7 @@ export class Footer extends Component {
 							<div className="col-md-4 col-sm-12">
 								<div className="widget clearfix">
 									<div className="widget-title">
-										<img className="flogo" src="images/flogo.png" alt="" />
+										<img className="flogo" src="/images/flogo.png" alt="" />
 									</div>
 
 									<div className="text-widget">
@@ -118,8 +118,8 @@ export class Footer extends Component {
 										</ul>
 
 										<div className="mobileicons">
-											<a href="#"><img src="images/mobile_01.png" alt="" /></a>
-											<a href="#"><img src="images/mobile_02.png" alt="" /></a>
+											<a href="#"><img src="/images/mobile_01.png" alt="" /></a>
+											<a href="#"><img src="/images/mobile_02.png" alt="" /></a>
 										</div>
 									</div>
 								</div>

@@ -3157,7 +3157,7 @@ hr.invis {
 }
 
 .singlejobhr {
-    margin: 60px 0 !important;
+    margin: 20px 0 !important;
 }
 
 .single-job hr.invis {
@@ -3251,7 +3251,7 @@ hr.invis {
 }
 
 .badge {
-    margin-top: 20px;
+    margin-top: 5px; /*margin-top: 20px;*/
     border-radius: 3px;
     padding: 4px 16px;
 }

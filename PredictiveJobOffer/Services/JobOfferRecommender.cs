@@ -1,50 +1,82 @@
-﻿using PredictiveJobOffer.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using PredictiveJobOffer.Models;
+using PredictiveJobOffer.Repository;
 
 namespace PredictiveJobOffer.Services
 {
     public class JobOfferRecommender
     {
+        private readonly JobOfferRepository _jobOfferRepository;
         public PersonalizedRecommendationsService PersonalizedRecommendationsService { get; set; }
 
         public JobOfferRecommender()
         {
             PersonalizedRecommendationsService = new PersonalizedRecommendationsService();
+            _jobOfferRepository = new JobOfferRepository();
         }
 
         public async Task<RecommendedViewModel> GetRecommendations(string userId)
         {
+            var results = new RecommendedViewModel();
+
             try
             {
-        
-                var results = new RecommendedViewModel();
-        
                 var recommendations = await PersonalizedRecommendationsService.GetRecommendations(userId);
-                // results.User = recommendations.User;
-                if (recommendations != null)
-                    results.RecommendedItems = recommendations.RecommendedItems;
-        
-                return results;
+
+                foreach (var jobOffer in recommendations.RecommendedItems.JobOffers)
+                {
+                    var detail = await _jobOfferRepository.GetJobOfferDetail(jobOffer.JobId);
+                    jobOffer.JobTitle = detail.JobTitle;
+                    jobOffer.Salary = detail.Salary;
+                    jobOffer.Publisher = detail.Publisher;
+                    jobOffer.Country = detail.Country;
+                    jobOffer.City = detail.City;
+                    jobOffer.PublishDate = detail.PublishDate;
+                    jobOffer.Department = detail.Department;
+                    jobOffer.JobDescription = detail.JobDescription;
+                }
+                
+                results.RecommendedItems = recommendations.RecommendedItems;
             }
             catch (Exception e)
             {
-                throw;
+                Console.WriteLine(e);
             }
+
+            return results;
         }
 
         public async Task<SimilarItemViewModel> GetSimilarItems(string jobOfferId, string userId)
         {
+            var results = new SimilarItemViewModel();
+
             try
             {
-                PersonalizedRecommendationsService.AddEventTracker(jobOfferId, userId);
+                await PersonalizedRecommendationsService.AddEventTracker(jobOfferId, userId);
 
-                var results = await PersonalizedRecommendationsService.GetSimilarItems(jobOfferId);
+                var similarities = await PersonalizedRecommendationsService.GetSimilarItems(jobOfferId);
 
-                return results;
+                foreach (var jobOffer in similarities.SimilarItems.JobOffers)
+                {
+                    var detail = await _jobOfferRepository.GetJobOfferDetail(jobOffer.JobId);
+                    jobOffer.JobTitle = detail.JobTitle;
+                    jobOffer.Salary = detail.Salary;
+                    jobOffer.Publisher = detail.Publisher;
+                    jobOffer.Country = detail.Country;
+                    jobOffer.City = detail.City;
+                    jobOffer.PublishDate = detail.PublishDate;
+                    jobOffer.Department = detail.Department;
+                    jobOffer.JobDescription = detail.JobDescription;
+                }
+
+                results.SimilarItems = similarities.SimilarItems;
             }
             catch (Exception e)
             {
-                throw;
+                Console.WriteLine(e);
             }
+
+            return results;
         }
     }
 }
