@@ -29,8 +29,10 @@ namespace PredictiveJobOffer.Services
         {
             try
             {
+                // Fetching data from repository 
                 var searchByJobTitle = await _jobOfferRepository.SearchByJobTitle(keyword);
 
+                // Parsing result data into a view model
                 var results = new RecommendedViewModel
                 {
                     RecommendedItems =
@@ -38,7 +40,7 @@ namespace PredictiveJobOffer.Services
                         JobOffers = searchByJobTitle.ToList()
                     }
                 };
-
+                
                 return results;
             }
             catch (Exception e)

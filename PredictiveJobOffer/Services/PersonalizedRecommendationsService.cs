@@ -114,7 +114,7 @@ namespace PredictiveJobOffer.Services
 
             var @event = new Event
             {
-                EventType = "click", //EVENT_TYPE
+                EventType = "watch", //EVENT_TYPE
                 Properties = serializeEvent, //Tracking Event
                 SentAt = DateTime.Now //TIMESTAMP
             };
