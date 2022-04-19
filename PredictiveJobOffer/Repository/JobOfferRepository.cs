@@ -11,14 +11,16 @@ namespace PredictiveJobOffer.Repository
 
         public JobOfferRepository()
         {
-            _dbConnection = new SqlConnection("uid=sa;pwd=Mando123!;Persist Security Info=False;Initial Catalog=JobOffers;Data Source=unifiedjobs.cntzec5n7l48.us-east-1.rds.amazonaws.com;");
+            _dbConnection =
+                new SqlConnection(
+                    "uid=sa;pwd=Mando123!;Persist Security Info=False;Initial Catalog=JobOffers;Data Source=unifiedjobs.cntzec5n7l48.us-east-1.rds.amazonaws.com;");
         }
 
         public async Task<IEnumerable<JobOffer>> SearchByJobTitle(string keyword)
         {
             var paramDictionary = new Dictionary<string, object>
             {
-                {"JobTitle", "%" + keyword + "%" }
+                { "JobTitle", "%" + keyword + "%" }
             };
 
             var parameters = new DynamicParameters(paramDictionary);
@@ -47,7 +49,7 @@ WHERE [JobTitle] like @JobTitle
         {
             var paramDictionary = new Dictionary<string, object>
             {
-                {"JobId", jobId}
+                { "JobId", jobId }
             };
 
             var parameters = new DynamicParameters(paramDictionary);

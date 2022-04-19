@@ -5,8 +5,7 @@ namespace PredictiveJobOffer.Models
     [Table("[dbo].JobOffersDetail")]
     public class JobOffer
     {
-        [ExplicitKey]
-        public string Id { get; set; }
+        [ExplicitKey] public string Id { get; set; }
 
         public int JobId { get; set; }
         public string JobTitle { get; set; }
@@ -18,37 +17,18 @@ namespace PredictiveJobOffer.Models
         public string Department { get; set; }
         public string JobDescription { get; set; }
 
-        [Write(false)]
-        public string ImdbId { get; set; }
+        [Write(false)] public string ImdbId { get; set; }
 
-        [Write(false)]
-        public string Title { get; set; }
+        [Write(false)] public string Title { get; set; }
 
-        [Write(false)]
-        public string PosterUrl { get; set; }
+        [Write(false)] public string PosterUrl { get; set; }
 
-        [Write(false)]
-        public string Rating { get; set; }
+        [Write(false)] public string Rating { get; set; }
 
-        [Write(false)]
-        public string Year { get; set; }
+        [Write(false)] public string Year { get; set; }
 
-        [Write(false)]
-        public string Genre { get; set; }
+        [Write(false)] public string Genre { get; set; }
 
-        [Write(false)]
-        public double Score { get; set; }
-
-        public string GetRating()
-        {
-            if (!string.IsNullOrEmpty(Rating))
-            {
-                var val = Convert.ToDouble(Rating);
-
-                return (val / 2.0).ToString("0.0");
-            }
-
-            return Rating;
-        }
+        [Write(false)] public double Score { get; set; }
     }
 }

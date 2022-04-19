@@ -59,6 +59,5 @@ namespace PredictiveJobOffer.Controllers
                 return BadRequest(e);
             }
         }
-
     }
 }

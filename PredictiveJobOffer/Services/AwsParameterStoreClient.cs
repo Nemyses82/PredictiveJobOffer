@@ -18,25 +18,18 @@ namespace PredictiveJobOffer.Services
 
         private static string GetValue(string parameter)
         {
-            try
+            var ssmClient = new AmazonSimpleSystemsManagementClient(Region);
+
+            var pName = $"/amz-personalize-demo/{parameter}";
+
+            var response = ssmClient.GetParameterAsync(new GetParameterRequest
             {
-                var ssmClient = new AmazonSimpleSystemsManagementClient(Region);
+                Name = pName
+            });
 
-                var pName = $"/amz-personalize-demo/{parameter}";
+            var pramResponse = response.Result;
 
-                var response = ssmClient.GetParameterAsync(new GetParameterRequest
-                {
-                    Name = pName
-                });
-
-                var pramResponse = response.Result;
-
-                return pramResponse.Parameter.Value;
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
+            return pramResponse.Parameter.Value;
         }
 
         public static string GetImdbApiKey()

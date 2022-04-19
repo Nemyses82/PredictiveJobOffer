@@ -33,7 +33,7 @@ namespace PredictiveJobOffer.Services
             }
             catch (Exception e)
             {
-                throw new JobOfferRecommenderException(e);
+                throw new JobOfferRecommenderException(e.Message);
             }
         }
 
@@ -57,12 +57,12 @@ namespace PredictiveJobOffer.Services
                     jobOffer.Department = detail.Department;
                     jobOffer.JobDescription = detail.JobDescription;
                 }
-                
+
                 results.RecommendedItems = recommendations.RecommendedItems;
             }
             catch (Exception e)
             {
-                throw new JobOfferRecommenderException(e);
+                throw new JobOfferRecommenderException(e.Message);
             }
 
             return results;
@@ -95,7 +95,7 @@ namespace PredictiveJobOffer.Services
             }
             catch (Exception e)
             {
-                throw new JobOfferRecommenderException(e);
+                throw new JobOfferRecommenderException(e.Message);
             }
 
             return results;
