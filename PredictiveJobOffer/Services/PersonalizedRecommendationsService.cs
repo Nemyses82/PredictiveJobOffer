@@ -71,7 +71,7 @@ namespace PredictiveJobOffer.Services
             var request = new GetRecommendationsRequest
             {
                 CampaignArn =
-                    "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-similar-items-campaign-2",
+                    "arn:aws:personalize:us-east-1:022189315692:campaign/predictive-job-offer-engine-similar-items-campaign-1",
                 ItemId = jobOfferId,
                 NumResults = 30
             };
@@ -103,7 +103,7 @@ namespace PredictiveJobOffer.Services
             // Setting PutEvents request
             var eventRequest = new PutEventsRequest
             {
-                TrackingId = "144fdc3f-e4bd-4946-b2ee-ee90ca0a7b7d", //Event Tracker ID
+                TrackingId = "9fdb4719-c375-4f3c-9692-cfa0d30d6489", //Event Tracker ID
                 UserId = userId, //USER_ID
                 SessionId = Guid.NewGuid().ToString() //SESSION_ID
             };
