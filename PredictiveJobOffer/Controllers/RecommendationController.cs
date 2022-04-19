@@ -33,14 +33,15 @@ namespace PredictiveJobOffer.Controllers
         {
             try
             {
+                // Retrieving JobOffers 
                 var recommendedViewModel = await _jobOfferRecommender.SearchByJobTitle(keyword);
 
-                return Ok(recommendedViewModel);
+                return Ok(recommendedViewModel); // Return Ok with status code 400 and ModelView
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                return BadRequest(e);
+                Console.WriteLine(e); // Writing to Console error object (e.g. message and stack)
+                return BadRequest(e); // Return BadRequest with status code 400 
             }
         }
 
@@ -54,13 +55,15 @@ namespace PredictiveJobOffer.Controllers
         {
             try
             {
+                // Retrieving JobOffers Recommendations
                 var recommendedViewModel = await _jobOfferRecommender.GetRecommendations(userId);
-                return Ok(recommendedViewModel);
+
+                return Ok(recommendedViewModel); // Return Ok with status code 400 and ModelView
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                return BadRequest(e);
+                Console.WriteLine(e); // Writing to Console error object (e.g. message and stack)
+                return BadRequest(e); // Return BadRequest with status code 400 
             }
         }
 
@@ -75,13 +78,15 @@ namespace PredictiveJobOffer.Controllers
         {
             try
             {
+                // Retrieving JobOffers Similarities
                 var similarItems = await _jobOfferRecommender.GetSimilarItems(jobOfferId, userId);
-                return Ok(similarItems);
+
+                return Ok(similarItems); // Return Ok with status code 400 and ModelView
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                return BadRequest(e);
+                Console.WriteLine(e); // Writing to Console error object (e.g. message and stack)
+                return BadRequest(e); // Return BadRequest with status code 400 
             }
         }
     }

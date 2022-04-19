@@ -43,6 +43,7 @@ namespace PredictiveJobOffer.Services
             }
             catch (Exception e)
             {
+                // Rethrow custom Exception
                 throw new JobOfferRecommenderException(e.Message);
             }
         }
@@ -59,8 +60,10 @@ namespace PredictiveJobOffer.Services
 
             try
             {
+                // Getting JobOffer Recommendations
                 var recommendations = await PersonalizedRecommendationsService.GetRecommendations(userId);
 
+                // Parsing JobOffers with details getting extra information from Database
                 foreach (var jobOffer in recommendations.RecommendedItems.JobOffers)
                 {
                     var detail = await _jobOfferRepository.GetJobOfferDetail(jobOffer.JobId);
@@ -78,9 +81,11 @@ namespace PredictiveJobOffer.Services
             }
             catch (Exception e)
             {
+                // Rethrow custom Exception
                 throw new JobOfferRecommenderException(e.Message);
             }
 
+            // Return RecommendedViewModel
             return results;
         }
 
@@ -97,10 +102,13 @@ namespace PredictiveJobOffer.Services
 
             try
             {
+                // Storing User behaviour for training Model based on this Interaction
                 await PersonalizedRecommendationsService.AddEventTracker(jobOfferId, userId);
 
+                // Getting JobOffer similarities 
                 var similarities = await PersonalizedRecommendationsService.GetSimilarItems(jobOfferId);
 
+                // Parsing JobOffers with details getting extra information from Database
                 foreach (var jobOffer in similarities.SimilarItems.JobOffers)
                 {
                     var detail = await _jobOfferRepository.GetJobOfferDetail(jobOffer.JobId);
@@ -118,9 +126,11 @@ namespace PredictiveJobOffer.Services
             }
             catch (Exception e)
             {
+                // Rethrow custom Exception
                 throw new JobOfferRecommenderException(e.Message);
             }
 
+            // Return SimilarItemViewModel
             return results;
         }
     }

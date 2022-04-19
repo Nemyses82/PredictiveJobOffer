@@ -1,5 +1,4 @@
 ﻿using Amazon;
-using Amazon.Personalize;
 using Amazon.PersonalizeEvents;
 using Amazon.PersonalizeEvents.Model;
 using Amazon.PersonalizeRuntime;
@@ -17,14 +16,12 @@ namespace PredictiveJobOffer.Services
     /// <see cref="https://docs.aws.amazon.com/personalize/latest/dg/API_Operations_Amazon_Personalize_Runtime.html"/>
     public class PersonalizedRecommendationsService
     {
-        public AmazonPersonalizeClient AmazonPersonalizeClient { get; set; }
 
         public AmazonPersonalizeRuntimeClient AmazonPersonalizeRuntimeClient { get; set; }
 
         public PersonalizedRecommendationsService()
         {
-            AmazonPersonalizeClient = new AmazonPersonalizeClient(RegionEndpoint.USEast1);
-
+            // Instance of Amazon Personalize Runtime Client with specific Region
             AmazonPersonalizeRuntimeClient = new AmazonPersonalizeRuntimeClient(RegionEndpoint.USEast1);
         }
 
@@ -37,6 +34,7 @@ namespace PredictiveJobOffer.Services
         {
             RecommendedViewModel results = new();
 
+            // Setting GetRecommendations request
             var getRecommendationsRequest = new GetRecommendationsRequest
             {
                 CampaignArn =
@@ -45,9 +43,11 @@ namespace PredictiveJobOffer.Services
                 NumResults = 30
             };
 
+            // Performing request to AWS Personalize to retrieve recommendations 
             var getRecommendationsResponse =
                 await AmazonPersonalizeRuntimeClient.GetRecommendationsAsync(getRecommendationsRequest);
 
+            // Preparing DTO for returning data
             if (getRecommendationsResponse.ItemList.Any())
                 results.RecommendedItems.JobOffers = getRecommendationsResponse.ItemList.Select(x => new JobOffer
                 {
@@ -67,7 +67,7 @@ namespace PredictiveJobOffer.Services
         {
             SimilarItemViewModel results = new();
 
-            //USER_PERSONALIZATION -- userid required
+            // Setting GetRecommendations request
             var request = new GetRecommendationsRequest
             {
                 CampaignArn =
@@ -76,8 +76,10 @@ namespace PredictiveJobOffer.Services
                 NumResults = 30
             };
 
+            // Performing request to AWS Personalize to retrieve similarities 
             var response = await AmazonPersonalizeRuntimeClient.GetRecommendationsAsync(request);
 
+            // Preparing DTO for returning data
             if (response.ItemList.Any())
                 results.SimilarItems.JobOffers = response.ItemList.Select(x => new JobOffer
                 {
@@ -98,7 +100,7 @@ namespace PredictiveJobOffer.Services
         /// <returns></returns>
         public async Task AddEventTracker(string jobOfferId, string userId)
         {
-            //Record Events
+            // Setting PutEvents request
             var eventRequest = new PutEventsRequest
             {
                 TrackingId = "144fdc3f-e4bd-4946-b2ee-ee90ca0a7b7d", //Event Tracker ID
@@ -106,24 +108,25 @@ namespace PredictiveJobOffer.Services
                 SessionId = Guid.NewGuid().ToString() //SESSION_ID
             };
 
-            var ev1 = new TrackingEvent { itemId = jobOfferId };
+            var trackingEvent = new TrackingEvent { itemId = jobOfferId };
 
-            var ev = JsonConvert.SerializeObject(ev1);
+            var serializeEvent = JsonConvert.SerializeObject(trackingEvent);
 
-            var e = new Event
+            var @event = new Event
             {
-                //e.EventId = "event1";
                 EventType = "click", //EVENT_TYPE
-                Properties = ev, //Tracking Event
+                Properties = serializeEvent, //Tracking Event
                 SentAt = DateTime.Now //TIMESTAMP
             };
 
-            var events = new List<Event> { e };
+            var events = new List<Event> { @event };
 
             eventRequest.EventList = events;
 
+            // Instance of Amazon Personalize object with specific Region
             var amazonPersonalizeEventsClient = new AmazonPersonalizeEventsClient(RegionEndpoint.USEast1);
 
+            // Performing submission of User Interaction event
             await amazonPersonalizeEventsClient.PutEventsAsync(eventRequest);
         }
     }

@@ -6,7 +6,7 @@
         {
             RecommendedItems = new RecommendedItems();
         }
-        
+
         public RecommendedItems RecommendedItems { get; set; }
     }
 }

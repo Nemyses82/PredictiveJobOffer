@@ -19,6 +19,7 @@ namespace PredictiveJobOffer.Repository
         /// </summary>
         public JobOfferRepository()
         {
+            // Database connection string
             _dbConnection =
                 new SqlConnection(
                     "uid=sa;pwd=Mando123!;Persist Security Info=False;Initial Catalog=JobOffers;Data Source=unifiedjobs.cntzec5n7l48.us-east-1.rds.amazonaws.com;");
@@ -31,11 +32,13 @@ namespace PredictiveJobOffer.Repository
         /// <returns></returns>
         public async Task<IEnumerable<JobOffer>> SearchByJobTitle(string keyword)
         {
+            // Dictionary for parsing key value pair property name / value
             var paramDictionary = new Dictionary<string, object>
             {
                 { "JobTitle", "%" + keyword + "%" }
             };
 
+            // Query parameters
             var parameters = new DynamicParameters(paramDictionary);
 
             const string query = @"
@@ -53,9 +56,11 @@ SELECT TOP (1000) [Id]
 WHERE [JobTitle] like @JobTitle
 ";
 
+            // Query execution
             var jobOffers = await _dbConnection.QueryAsync<JobOffer>(query, parameters);
 
-            return jobOffers;
+            // Return data
+            return jobOffers; 
         }
 
         /// <summary>
@@ -65,11 +70,13 @@ WHERE [JobTitle] like @JobTitle
         /// <returns></returns>
         public async Task<JobOffer> GetJobOfferDetail(float jobId)
         {
+            // Dictionary for parsing key value pair property name / value
             var paramDictionary = new Dictionary<string, object>
             {
                 { "JobId", jobId }
             };
 
+            // Query parameters
             var parameters = new DynamicParameters(paramDictionary);
 
             const string query = @"
@@ -87,8 +94,10 @@ SELECT TOP (1000) [Id]
 WHERE [JobId] = @JobId
 ";
 
+            // Query execution
             var jobOffer = await _dbConnection.QueryFirstOrDefaultAsync<JobOffer>(query, parameters);
 
+            // Return data
             return jobOffer;
         }
     }
