@@ -1,52 +1,60 @@
+// Creation Date: 19/04/2022
+// Author: Daniele Giometti - Roehampton University - Faculty of Computing
+
+// Import libraries and internal references
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import $ from 'jquery'
+import { Images, PredictiveJobBaseApi } from '../constants';
 import { SectionTitle } from './SectionTitle';
 
-function JobListing() {
+function JobListing() { // React Functional Component
 
-   let { userId } = useParams();
+   // Returns an object of key/value pairs of the dynamic params from the current URL that were matched by the route path.
+   let { userId } = useParams(); 
 
+   // Returns a stateful value, and a function to update it.
    const [name, setName] = useState("");
    const [jobOffers, setJobOffers] = useState([]);
+   
+   useEffect(() => { // Hook that triggers after DOM Render updates and it performs a function passed in
 
-   useEffect(() => {
-
-      const fetchData = async () => {
+      const fetchData = async () => { // Internal function
          try {
 
-            console.log({ userId });
+            const { data: response } = // Performs API Call for getting recommendations 
+               await axios.get(`${PredictiveJobBaseApi}/Recommendation/GetRecommendations/${userId ?? '1'}`);
 
-            const { data: response } = await axios.get(`http://localhost:5102/api/Recommendation/GetRecommendations/${userId ?? '1'}`);
+            // Persisting state with JobOffers result
             setJobOffers(response.recommendedItems.jobOffers);
 
          } catch (err) {
-            console.error((err as Error).message);
+            console.error((err as Error).message); // Logs error in Console
          }
       };
 
-      fetchData();
+      fetchData(); // Perform function for calling API
 
    }, [userId]);
 
-   const handleSubmit = (e : any) => {
-      e.preventDefault();
+   const handleSubmit = (e : any) => { // Function trigger on submit form
+      e.preventDefault(); // Prevents form is submitted by javascript
 
-      const fetchData = async () => {
+      const fetchData = async () => { // Internal function
          try {
 
-            console.log({ userId });
+            const { data: response } = // Performs API Call for getting JobOffers queried by title
+               await axios.get(`${PredictiveJobBaseApi}/Recommendation/SearchByJobTitle/${name}`);
 
-            const { data: response } = await axios.get(`http://localhost:5102/api/Recommendation/SearchByJobTitle/${name}`);
+            // Persisting state with JobOffers result
             setJobOffers(response.recommendedItems.jobOffers);
 
          } catch (err) {
-            console.error((err as Error).message);
+            console.error((err as Error).message); // Logs error in Console
          }
       };
 
-      fetchData();
+      fetchData(); // Perform function for calling API
 
    }
 
@@ -61,7 +69,8 @@ function JobListing() {
                         <div className="col-md-4 col-sm-6 col-xs-12">
                            <div className="input-group">
                               <span className="input-group-addon" id="basic-addon2"><i className="fa fa-search"></i></span>
-                              <input type="text"  value={name} onChange={e => setName(e.target.value)} className="form-control" placeholder="Search Keywords" aria-describedby="basic-addon2"/>
+                              <input type="text"  value={name} onChange={e => setName(e.target.value)} className="form-control" 
+                                 placeholder="Search Keywords" aria-describedby="basic-addon2"/>
                            </div>
                         </div>
 
@@ -103,7 +112,7 @@ function JobListing() {
                                                 key={jobOffer.jobId}
                                                 state={jobOffer}
                                              >
-                                                <img src="/upload/job_02_2.jpg" alt="" className="img-responsive img-thumbnail" />
+                                                <img src={`/upload/${Images[Math.floor(Math.random() * Images.length)]}`} alt="" className="img-responsive img-thumbnail" />
                                              </Link>
                                           </a>
                                        </div>
@@ -111,7 +120,6 @@ function JobListing() {
 
                                     <div className="col-md-6 col-sm-6 col-xs-12">
                                        <div className="badge full-badge">Full Time</div>
-                                       {/* <h3><a href="job-single.html" title="">({jobOffer.jobId}) {jobOffer.jobTitle}</a></h3> */}
 
                                        <h3><a href="#" title="">
                                           <Link to={`/jobofferdetail/${jobOffer.jobId}/${userId ?? '1'}`}

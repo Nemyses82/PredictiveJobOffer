@@ -103,7 +103,7 @@ namespace PredictiveJobOffer.Services
             // Setting PutEvents request
             var eventRequest = new PutEventsRequest
             {
-                TrackingId = "9fdb4719-c375-4f3c-9692-cfa0d30d6489", //Event Tracker ID
+                TrackingId = "b9681b1b-c0f5-4d41-bcc8-1da4801c78db", //Event Tracker ID
                 UserId = userId, //USER_ID
                 SessionId = Guid.NewGuid().ToString() //SESSION_ID
             };

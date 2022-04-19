@@ -1,35 +1,41 @@
+// Creation Date: 19/04/2022
+// Author: Daniele Giometti - Roehampton University - Faculty of Computing
+
+// Import libraries and internal references
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams, useLocation } from 'react-router-dom';
+import { Images, PredictiveJobBaseApi } from '../constants';
 import { SectionTitle } from './SectionTitle';
 
-function JobOfferDetail() {
+function JobOfferDetail() { // React Functional Component
 
+   // Returns an object of key/value pairs of the dynamic params from the current URL that were matched by the route path.
    let { jobOfferId, userId } = useParams();
 
-   const parentJobOffer = useLocation().state as any;
-
+   // Returns the current location object, which represents the current URL in web browsers   
+   const parentJobOffer = useLocation().state as any; // Retrieve JobOffer payload of the parent
    const [jobOffers, setJobOffers] = useState([]);
 
-   useEffect(() => {
+   useEffect(() => { // Hook that triggers after DOM Render updates and it performs a function passed in
 
-      const fetchData = async () => {
+      const fetchData = async () => { // Internal function
          try {
 
-            console.log({ jobOfferId });
-            console.log({ userId });
+            const { data: response } = // Performs API Call for getting similarities
+               await axios.get(`${PredictiveJobBaseApi}/Recommendation/GetSimilarItems/${jobOfferId}/${userId}`);
 
-            const { data: response } = await axios.get(`http://localhost:5102/api/Recommendation/GetSimilarItems/${jobOfferId}/${userId}`);
+            // Persisting state with JobOffers result
             setJobOffers(response.similarItems.jobOffers);
            
          } catch (err) {
-            console.error((err as Error).message);
+            console.error((err as Error).message); // Logs error in Console
          }
       };
 
-      fetchData();
+      fetchData(); // Perform function for calling API
 
-   }, [jobOfferId, userId]);
+   }, [jobOfferId, userId]); // It triggers useEffect Hook only when one of these 2 values changes
 
    return (
       <div>
@@ -40,12 +46,11 @@ function JobOfferDetail() {
                      <div className="row">
                         <div className="col-md-4 col-sm-3 col-xs-12">
                            <div className="post-media">
-                              {/* <a href="job-single.html"><img src="/upload/job_02.jpg" alt="" className="img-responsive img-thumbnail" /></a> */}
                               <a href="#">
                                  <Link to={`/jobofferdetail/${parentJobOffer.jobId}/${userId ?? '1'}`}
                                     key={parentJobOffer.jobId}
                                     state={parentJobOffer}>
-                                 <img src="/upload/job_02.jpg" alt="" className="img-responsive img-thumbnail" />
+                                 <img src={`/upload/${Images[Math.floor(Math.random() * Images.length)]}`} alt="" className="img-responsive img-thumbnail" />
                                  </Link>
                               </a>                              
                            </div>
@@ -54,7 +59,6 @@ function JobOfferDetail() {
                         <div className="col-md-6 col-sm-7 col-xs-12">
                            <div className="badge full-badge">Full Time</div>
 
-                           {/* <h3><a href="job-single.html" title="">({parentJobOffer.jobId}) {parentJobOffer.jobTitle}</a></h3> */}
                            <h3><a href="#" title="">
                               <Link to={`/jobofferdetail/${parentJobOffer.jobId}/${userId ?? '1'}`}
                                  key={parentJobOffer.jobId}
@@ -119,12 +123,11 @@ function JobOfferDetail() {
                               <div className="row">
                                  <div className="col-md-2 col-sm-2 col-xs-12">
                                     <div className="post-media">
-                                       {/* <a href="job-single.html"><img src="/upload/job_06.jpg" alt="" className="img-responsive img-thumbnail" /></a> */}
                                        <a href="#">
                                           <Link to={`/jobofferdetail/${jobOffer.jobId}/${userId ?? '1'}`}
                                              key={jobOffer.jobId}
                                              state={jobOffer}>
-                                          <img src="/upload/job_06.jpg" alt="" className="img-responsive img-thumbnail" />
+                                          <img src={`/upload/${Images[Math.floor(Math.random() * Images.length)]}`} alt="" className="img-responsive img-thumbnail" />
                                           </Link>
                                        </a>                                       
                                     </div>
