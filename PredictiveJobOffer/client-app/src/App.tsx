@@ -1,5 +1,3 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Loader } from './components/Loader';
 import { TopBar } from './components/TopBar';
@@ -7,7 +5,7 @@ import { Footer } from './components/Footer';
 import { ContactMe } from './components/ContactMe';
 import { PageTop } from './components/PageTop';
 import { LoginModal } from './components/LoginModal';
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import JobListing from './components/JobListing';
 import JobOfferDetail from './components/JobOfferDetail';
 import Header from './components/Header';
@@ -44,7 +42,7 @@ function App() {
                     <div id="sitefooter" className="container">
                         <div id="copyright" className="row">
                             <div className="col-md-6 col-sm-12 text-left">
-                                <p>YourJob ® is a designed and registered trademark of <a href="http://psdconverthtml.com">PSD to HTML</a> INC.</p>
+                                <p><a href="http://predictivejoboffer.com">PredictiveJobOffer ®</a> INC. is a designed and registered trademark</p>
                             </div>
                             <div className="col-md-6 col-sm-12">
                                 <ul className="list-inline text-right">

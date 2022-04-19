@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using PredictiveJobOffer.Exceptions;
 using PredictiveJobOffer.Models;
 using PredictiveJobOffer.Repository;
 
@@ -7,7 +7,7 @@ namespace PredictiveJobOffer.Services
     public class JobOfferRecommender
     {
         private readonly JobOfferRepository _jobOfferRepository;
-        public PersonalizedRecommendationsService PersonalizedRecommendationsService { get; set; }
+        private PersonalizedRecommendationsService PersonalizedRecommendationsService { get; }
 
         public JobOfferRecommender()
         {
@@ -17,17 +17,24 @@ namespace PredictiveJobOffer.Services
 
         public async Task<RecommendedViewModel> SearchByJobTitle(string keyword)
         {
-            var searchByJobTitle = await _jobOfferRepository.SearchByJobTitle(keyword);
-
-            var results = new RecommendedViewModel
+            try
             {
-                RecommendedItems =
-                {
-                    JobOffers = searchByJobTitle.ToList()
-                }
-            };
+                var searchByJobTitle = await _jobOfferRepository.SearchByJobTitle(keyword);
 
-            return results;
+                var results = new RecommendedViewModel
+                {
+                    RecommendedItems =
+                    {
+                        JobOffers = searchByJobTitle.ToList()
+                    }
+                };
+
+                return results;
+            }
+            catch (Exception e)
+            {
+                throw new JobOfferRecommenderException(e);
+            }
         }
 
         public async Task<RecommendedViewModel> GetRecommendations(string userId)
@@ -55,7 +62,7 @@ namespace PredictiveJobOffer.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                throw new JobOfferRecommenderException(e);
             }
 
             return results;
@@ -88,7 +95,7 @@ namespace PredictiveJobOffer.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                throw new JobOfferRecommenderException(e);
             }
 
             return results;

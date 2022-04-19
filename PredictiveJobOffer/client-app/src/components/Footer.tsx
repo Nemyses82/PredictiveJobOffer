@@ -105,8 +105,7 @@ export class Footer extends Component {
 										<img className="flogo" src="/images/logo2.png" alt="" />
 									</div>
 
-									<div className="text-widget">
-										<p>This is a professional responsive HTML5 job listing, job board and freelancer website template. This template available only Envato marketplace!</p>
+									<div className="text-widget">										
 
 										<ul className="list-inline social-small">
 											<li><a href="#"><i className="fa fa-facebook"></i></a></li>
