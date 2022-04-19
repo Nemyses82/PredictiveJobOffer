@@ -4,6 +4,9 @@ using PredictiveJobOffer.Repository;
 
 namespace PredictiveJobOffer.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class JobOfferRecommender
     {
         private readonly JobOfferRepository _jobOfferRepository;
@@ -15,6 +18,12 @@ namespace PredictiveJobOffer.Services
             _jobOfferRepository = new JobOfferRepository();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        /// <exception cref="JobOfferRecommenderException"></exception>
         public async Task<RecommendedViewModel> SearchByJobTitle(string keyword)
         {
             try
@@ -37,6 +46,12 @@ namespace PredictiveJobOffer.Services
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        /// <exception cref="JobOfferRecommenderException"></exception>
         public async Task<RecommendedViewModel> GetRecommendations(string userId)
         {
             var results = new RecommendedViewModel();
@@ -68,6 +83,13 @@ namespace PredictiveJobOffer.Services
             return results;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jobOfferId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        /// <exception cref="JobOfferRecommenderException"></exception>
         public async Task<SimilarItemViewModel> GetSimilarItems(string jobOfferId, string userId)
         {
             var results = new SimilarItemViewModel();

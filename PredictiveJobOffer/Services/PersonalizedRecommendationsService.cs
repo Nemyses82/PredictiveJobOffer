@@ -9,6 +9,9 @@ using PredictiveJobOffer.Models;
 
 namespace PredictiveJobOffer.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class PersonalizedRecommendationsService
     {
         public AmazonPersonalizeClient AmazonPersonalizeClient { get; set; }
@@ -22,6 +25,11 @@ namespace PredictiveJobOffer.Services
             AmazonPersonalizeRuntimeClient = new AmazonPersonalizeRuntimeClient(RegionEndpoint.USEast1);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task<RecommendedViewModel> GetRecommendations(string userId)
         {
             RecommendedViewModel results = new();
@@ -46,7 +54,12 @@ namespace PredictiveJobOffer.Services
 
             return results;
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jobOfferId"></param>
+        /// <returns></returns>
         public async Task<SimilarItemViewModel> GetSimilarItems(string jobOfferId)
         {
             SimilarItemViewModel results = new();
@@ -72,6 +85,12 @@ namespace PredictiveJobOffer.Services
             return results;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jobOfferId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task AddEventTracker(string jobOfferId, string userId)
         {
             //Record Events

@@ -3,17 +3,28 @@ using PredictiveJobOffer.Services;
 
 namespace PredictiveJobOffer.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class RecommendationController : ControllerBase
     {
         private readonly JobOfferRecommender _jobOfferRecommender;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public RecommendationController()
         {
             _jobOfferRecommender = new JobOfferRecommender();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
         [Route("SearchByJobTitle/{keyword}")]
         public async Task<IActionResult> SearchByJobTitle(string keyword)
         {
@@ -30,6 +41,11 @@ namespace PredictiveJobOffer.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [Route("GetRecommendations/{userId}")]
         public async Task<IActionResult> GetRecommendations(string userId)
         {
@@ -45,6 +61,12 @@ namespace PredictiveJobOffer.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jobOfferId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [Route("GetSimilarItems/{jobOfferId}/{userId}")]
         public async Task<IActionResult> GetSimilarItems(string jobOfferId, string userId)
         {

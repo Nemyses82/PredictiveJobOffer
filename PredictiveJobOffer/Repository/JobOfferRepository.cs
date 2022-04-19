@@ -5,10 +5,16 @@ using PredictiveJobOffer.Models;
 
 namespace PredictiveJobOffer.Repository
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class JobOfferRepository
     {
         private readonly IDbConnection _dbConnection;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public JobOfferRepository()
         {
             _dbConnection =
@@ -16,6 +22,11 @@ namespace PredictiveJobOffer.Repository
                     "uid=sa;pwd=Mando123!;Persist Security Info=False;Initial Catalog=JobOffers;Data Source=unifiedjobs.cntzec5n7l48.us-east-1.rds.amazonaws.com;");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<JobOffer>> SearchByJobTitle(string keyword)
         {
             var paramDictionary = new Dictionary<string, object>
@@ -45,6 +56,11 @@ WHERE [JobTitle] like @JobTitle
             return jobOffers;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jobId"></param>
+        /// <returns></returns>
         public async Task<JobOffer> GetJobOfferDetail(float jobId)
         {
             var paramDictionary = new Dictionary<string, object>
