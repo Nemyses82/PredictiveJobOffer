@@ -10,8 +10,11 @@ using PredictiveJobOffer.Models;
 namespace PredictiveJobOffer.Services
 {
     /// <summary>
+    /// Author: Daniele Giometti - Roehampton University - Faculty of Computing
     /// 
+    /// Service class that acts as gateway to AWS Personalize API
     /// </summary>
+    /// <see cref="https://docs.aws.amazon.com/personalize/latest/dg/API_Operations_Amazon_Personalize_Runtime.html"/>
     public class PersonalizedRecommendationsService
     {
         public AmazonPersonalizeClient AmazonPersonalizeClient { get; set; }
@@ -26,7 +29,7 @@ namespace PredictiveJobOffer.Services
         }
 
         /// <summary>
-        /// 
+        /// Function that returns view mode recommendations based by UserId
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
@@ -54,9 +57,9 @@ namespace PredictiveJobOffer.Services
 
             return results;
         }
-        
+
         /// <summary>
-        /// 
+        /// Function that returns view mode similarities based by UserId
         /// </summary>
         /// <param name="jobOfferId"></param>
         /// <returns></returns>
@@ -86,8 +89,10 @@ namespace PredictiveJobOffer.Services
         }
 
         /// <summary>
-        /// 
+        /// Function void that records user interaction event data. For more information see Recording Events.
         /// </summary>
+        /// <see cref="https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html"/>
+        /// <see cref="https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html"/>
         /// <param name="jobOfferId"></param>
         /// <param name="userId"></param>
         /// <returns></returns>

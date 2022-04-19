@@ -5,7 +5,8 @@ using PredictiveJobOffer.Repository;
 namespace PredictiveJobOffer.Services
 {
     /// <summary>
-    /// 
+    /// Class facade responsible to handle requests for 
+    /// retrieving information about JobOffers and recommended data
     /// </summary>
     public class JobOfferRecommender
     {
@@ -19,7 +20,7 @@ namespace PredictiveJobOffer.Services
         }
 
         /// <summary>
-        /// 
+        /// Function for fetching JobOffers filtering by JobTile
         /// </summary>
         /// <param name="keyword"></param>
         /// <returns></returns>
@@ -47,7 +48,7 @@ namespace PredictiveJobOffer.Services
         }
 
         /// <summary>
-        /// 
+        /// Function for retrieving Recommendations based by UserId
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
@@ -84,7 +85,7 @@ namespace PredictiveJobOffer.Services
         }
 
         /// <summary>
-        /// 
+        /// Function for retrieving Similarities based by JobOfferId and UserId
         /// </summary>
         /// <param name="jobOfferId"></param>
         /// <param name="userId"></param>

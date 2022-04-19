@@ -6,14 +6,16 @@ using PredictiveJobOffer.Models;
 namespace PredictiveJobOffer.Repository
 {
     /// <summary>
+    /// Author: Daniele Giometti - Roehampton University - Faculty of Computing
     /// 
+    /// Class for Data Access Layer and accessing to JobOffer repository from RDS SQL Server Instance
     /// </summary>
     public class JobOfferRepository
     {
         private readonly IDbConnection _dbConnection;
 
         /// <summary>
-        /// 
+        /// Constructor that encapsulates connection string to database access
         /// </summary>
         public JobOfferRepository()
         {
@@ -23,7 +25,7 @@ namespace PredictiveJobOffer.Repository
         }
 
         /// <summary>
-        /// 
+        /// Function that returns a collection of JobOffer filtered by JobTitle
         /// </summary>
         /// <param name="keyword"></param>
         /// <returns></returns>
@@ -57,7 +59,7 @@ WHERE [JobTitle] like @JobTitle
         }
 
         /// <summary>
-        /// 
+        /// Function that returns JobOffer details based by JobId
         /// </summary>
         /// <param name="jobId"></param>
         /// <returns></returns>
