@@ -4,11 +4,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
-const container = document.getElementById('root');
-const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+const container = document.getElementById('root'); // HTML Component that wraps App Component
+const root = createRoot(container!);
 root.render(
    <BrowserRouter>
-      <App />
+      <App /> {/* App Component that contains the main page */}
    </BrowserRouter>
 );
 

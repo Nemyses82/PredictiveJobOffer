@@ -688,7 +688,7 @@ h5.color3 {
 .section-title {
     display: block;
     position: relative;
-    margin-bottom: 60px;
+    margin-bottom: 20px;/* margin-bottom: 60px; */
 }
 
 .m20b {

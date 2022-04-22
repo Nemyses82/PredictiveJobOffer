@@ -15,14 +15,14 @@ function App() {
     return (
         <div className="App">
 
-            <Loader />
+            <Loader /> {/* Loader Component */}
 
             <div id="wrapper">
-                <TopBar />
+                <TopBar /> {/* TopBar Component */}
 
-                <Header />
+                <Header /> {/* Header Component */}
 
-                <Routes>
+                <Routes> {/* Routes rules Definition */}
                     <Route path="/" element={<JobListing />} />
 
                     <Route path="/:userId" element={<JobListing />} />
@@ -36,15 +36,13 @@ function App() {
                     <Route path="/jobofferdetail/:jobOfferId/:userId" element={<JobOfferDetail />} />
                 </Routes>
 
-                <Footer />
+                <Footer /> {/* Footer Component */}
 
-                <StickyFooter />
+                <StickyFooter /> {/* StickyFooter Component */}
 
-                <ContactMe />
+                <PageTop /> {/* PageTop Component */}
 
-                <PageTop />
-
-                <LoginModal />
+                <LoginModal /> {/* Login Component */}
             </div>
         </div>
     );
